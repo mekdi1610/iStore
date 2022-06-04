@@ -15,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $category = category::all();
+        return $category;
     }
 
     /**
@@ -36,7 +37,12 @@ class CategoryController extends Controller
      */
     public function store(StorecategoryRequest $request)
     {
-        //
+        $category = new category;
+        $category->name = $request->name;
+        $category->store_id = $request->store_id;
+        $category->show = $request->show;
+        $category->save();
+        return $category;
     }
 
     /**
@@ -45,9 +51,10 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(category $category)
+    public function show($id)
     {
-        //
+           return category::findOrFail($id);
+      
     }
 
     /**
@@ -71,6 +78,9 @@ class CategoryController extends Controller
     public function update(UpdatecategoryRequest $request, category $category)
     {
         //
+        $category=category::find($request->id);
+        $category->update($request->all());
+        return $category;
     }
 
     /**
@@ -79,8 +89,8 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(category $category)
+    public function destroy($id)
     {
-        //
+        return category::destroy($id);
     }
 }

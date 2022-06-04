@@ -6,7 +6,7 @@ use App\Http\Requests\StorestockRequest;
 use App\Http\Requests\UpdatestockRequest;
 use App\Models\stock;
 
-class StockController extends Controller
+class stockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class StockController extends Controller
      */
     public function index()
     {
-        //
+        $stock = stock::all();
+        return $stock;
     }
 
     /**
@@ -36,7 +37,11 @@ class StockController extends Controller
      */
     public function store(StorestockRequest $request)
     {
-        //
+        $stock = new stock;
+        $stock->product_id = $request->product_id;
+        $stock->balance_quantity = $request->balance_quantity;
+        $stock->save();
+        return $stock;
     }
 
     /**
@@ -45,9 +50,10 @@ class StockController extends Controller
      * @param  \App\Models\stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function show(stock $stock)
+    public function show($id)
     {
-        //
+           return stock::findOrFail($id);
+      
     }
 
     /**
@@ -70,7 +76,9 @@ class StockController extends Controller
      */
     public function update(UpdatestockRequest $request, stock $stock)
     {
-        //
+        $stock=stock::find($request->id);
+        $stock->update($request->all());
+        return $stock;
     }
 
     /**
@@ -79,8 +87,8 @@ class StockController extends Controller
      * @param  \App\Models\stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function destroy(stock $stock)
+    public function destroy($id)
     {
-        //
+        return stock::destroy($id);
     }
 }

@@ -6,7 +6,7 @@ use App\Http\Requests\StorelocationRequest;
 use App\Http\Requests\UpdatelocationRequest;
 use App\Models\location;
 
-class LocationController extends Controller
+class locationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        $location = location::all();
+        return $location;
     }
 
     /**
@@ -36,7 +37,12 @@ class LocationController extends Controller
      */
     public function store(StorelocationRequest $request)
     {
-        //
+        $location = new location;
+        $location->country = $request->country;
+        $location->city = $request->city;
+        $location->street = $request->street;
+        $location->save();
+        return $location;
     }
 
     /**
@@ -45,9 +51,10 @@ class LocationController extends Controller
      * @param  \App\Models\location  $location
      * @return \Illuminate\Http\Response
      */
-    public function show(location $location)
+    public function show($id)
     {
-        //
+           return location::findOrFail($id);
+      
     }
 
     /**
@@ -71,6 +78,9 @@ class LocationController extends Controller
     public function update(UpdatelocationRequest $request, location $location)
     {
         //
+        $location=location::find($request->id);
+        $location->update($request->all());
+        return $location;
     }
 
     /**
@@ -79,8 +89,8 @@ class LocationController extends Controller
      * @param  \App\Models\location  $location
      * @return \Illuminate\Http\Response
      */
-    public function destroy(location $location)
+    public function destroy($id)
     {
-        //
+        return location::destroy($id);
     }
 }

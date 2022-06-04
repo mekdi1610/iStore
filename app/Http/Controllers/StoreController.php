@@ -6,7 +6,7 @@ use App\Http\Requests\StorestoreRequest;
 use App\Http\Requests\UpdatestoreRequest;
 use App\Models\store;
 
-class StoreController extends Controller
+class storeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class StoreController extends Controller
      */
     public function index()
     {
-        //
+        $store = store::all();
+        return $store;
     }
 
     /**
@@ -36,7 +37,13 @@ class StoreController extends Controller
      */
     public function store(StorestoreRequest $request)
     {
-        //
+        $store = new store;
+        $store->name = $request->name;
+        $store->location_id = $request->location_id;
+        $store->user_id = $request->user_id;
+        $store->status = $request->status;
+        $store->save();
+        return $store;
     }
 
     /**
@@ -45,9 +52,10 @@ class StoreController extends Controller
      * @param  \App\Models\store  $store
      * @return \Illuminate\Http\Response
      */
-    public function show(store $store)
+    public function show($id)
     {
-        //
+           return store::findOrFail($id);
+      
     }
 
     /**
@@ -70,7 +78,9 @@ class StoreController extends Controller
      */
     public function update(UpdatestoreRequest $request, store $store)
     {
-        //
+        $store=store::find($request->id);
+        $store->update($request->all());
+        return $store;
     }
 
     /**
@@ -79,8 +89,8 @@ class StoreController extends Controller
      * @param  \App\Models\store  $store
      * @return \Illuminate\Http\Response
      */
-    public function destroy(store $store)
+    public function destroy($id)
     {
-        //
+        return store::destroy($id);
     }
 }

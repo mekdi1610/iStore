@@ -6,7 +6,7 @@ use App\Http\Requests\StoreproductRequest;
 use App\Http\Requests\UpdateproductRequest;
 use App\Models\product;
 
-class ProductController extends Controller
+class productController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = product::all();
+        return $product;
     }
 
     /**
@@ -35,8 +36,16 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreproductRequest $request)
-    {
-        //
+    {       
+        $product = new product;
+        $product->name = $request->name;
+        $product->detail = $request->detail;
+        $product->catagory_id = $request->catagory_id;
+        $product->code = $request->code;
+        $product->model = $request->model;
+        $product->image = $request->image;
+        $product->store_id = $request->store_id;
+        $product->unit_price = $request->unit_price;
     }
 
     /**
@@ -45,9 +54,10 @@ class ProductController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(product $product)
+    public function show($id)
     {
-        //
+           return product::findOrFail($id);
+      
     }
 
     /**
@@ -71,6 +81,9 @@ class ProductController extends Controller
     public function update(UpdateproductRequest $request, product $product)
     {
         //
+        $product=product::find($request->id);
+        $product->update($request->all());
+        return $product;
     }
 
     /**
@@ -79,8 +92,8 @@ class ProductController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(product $product)
+    public function destroy($id)
     {
-        //
+        return product::destroy($id);
     }
 }

@@ -6,7 +6,7 @@ use App\Http\Requests\StoresaleRequest;
 use App\Http\Requests\UpdatesaleRequest;
 use App\Models\sale;
 
-class SaleController extends Controller
+class saleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class SaleController extends Controller
      */
     public function index()
     {
-        //
+        $sale = sale::all();
+        return $sale;
     }
 
     /**
@@ -36,7 +37,10 @@ class SaleController extends Controller
      */
     public function store(StoresaleRequest $request)
     {
-        //
+        $sale = new sale;
+        $sale->order_id = $request->order_id;
+        $sale->save();
+        return $sale;
     }
 
     /**
@@ -45,9 +49,10 @@ class SaleController extends Controller
      * @param  \App\Models\sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function show(sale $sale)
+    public function show($id)
     {
-        //
+           return sale::findOrFail($id);
+      
     }
 
     /**
@@ -70,7 +75,9 @@ class SaleController extends Controller
      */
     public function update(UpdatesaleRequest $request, sale $sale)
     {
-        //
+        $sale=sale::find($request->id);
+        $sale->update($request->all());
+        return $sale;
     }
 
     /**
@@ -79,8 +86,8 @@ class SaleController extends Controller
      * @param  \App\Models\sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function destroy(sale $sale)
+    public function destroy($id)
     {
-        //
+        return sale::destroy($id);
     }
 }

@@ -17,7 +17,7 @@ class CreateStoresTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('status');
-            $table->unsignedBigInteger('location_id');
+            $table->unsignedBigInteger('location_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });

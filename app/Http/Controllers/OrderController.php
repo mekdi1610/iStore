@@ -6,7 +6,7 @@ use App\Http\Requests\StoreorderRequest;
 use App\Http\Requests\UpdateorderRequest;
 use App\Models\order;
 
-class OrderController extends Controller
+class orderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $order = order::all();
+        return $order;
     }
 
     /**
@@ -36,7 +37,13 @@ class OrderController extends Controller
      */
     public function store(StoreorderRequest $request)
     {
-        //
+        $order = new order;
+        $order->product_id = $request->product_id;
+        $order->user_id = $request->user_id;
+        $order->status = $request->status;
+        $order->quantity = $request->quantity;
+        $order->save();
+        return $order;
     }
 
     /**
@@ -45,9 +52,10 @@ class OrderController extends Controller
      * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(order $order)
+    public function show($id)
     {
-        //
+           return order::findOrFail($id);
+      
     }
 
     /**
@@ -71,6 +79,9 @@ class OrderController extends Controller
     public function update(UpdateorderRequest $request, order $order)
     {
         //
+        $order=order::find($request->id);
+        $order->update($request->all());
+        return $order;
     }
 
     /**
@@ -79,8 +90,8 @@ class OrderController extends Controller
      * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(order $order)
+    public function destroy($id)
     {
-        //
+        return order::destroy($id);
     }
 }

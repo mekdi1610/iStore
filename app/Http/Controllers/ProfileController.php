@@ -15,7 +15,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $profile = profile::all();
+        return $profile;
     }
 
     /**
@@ -36,7 +37,12 @@ class ProfileController extends Controller
      */
     public function store(StoreprofileRequest $request)
     {
-        //
+        $profile = new profile;
+        $profile->first_name = $request->first_name;
+        $profile->middle_name = $request->middle_name;
+        $profile->last_name = $request->last_name;
+        $profile->save();
+        return $profile;
     }
 
     /**
@@ -45,9 +51,10 @@ class ProfileController extends Controller
      * @param  \App\Models\profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function show(profile $profile)
+    public function show($id)
     {
-        //
+           return profile::findOrFail($id);
+      
     }
 
     /**
@@ -70,7 +77,9 @@ class ProfileController extends Controller
      */
     public function update(UpdateprofileRequest $request, profile $profile)
     {
-        //
+        $profile=profile::find($request->id);
+        $profile->update($request->all());
+        return $profile;
     }
 
     /**
@@ -79,8 +88,8 @@ class ProfileController extends Controller
      * @param  \App\Models\profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function destroy(profile $profile)
+    public function destroy($id)
     {
-        //
+        return profile::destroy($id);
     }
 }
