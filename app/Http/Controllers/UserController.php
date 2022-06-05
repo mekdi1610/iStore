@@ -33,16 +33,22 @@ class userController extends Controller
      * user a newly created resource in storage.
      *
      */
-    public function user(Request $request)
+    public function store(Request $request)
     {
-        $user = new user;
+        $user = new User;
+        if($request->password==$request->confirmpassword){
         $user->email = $request->email;
         $user->role = $request->role;
         $user->profile_id = $request->profile_id;
+       
         $hashedpassword = Hash::make($request->password);
         $user->password = $hashedpassword;
         $user->save();
         return $user;
+        }
+        else{
+            //passwords dont match
+        }
     }
 
     /**
