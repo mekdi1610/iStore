@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorestoreRequest;
 use App\Http\Requests\UpdatestoreRequest;
 use App\Models\store;
+use App\Models\product;
+use App\Models\order;
 
 class storeController extends Controller
 {
@@ -67,6 +69,16 @@ class storeController extends Controller
     public function edit(store $store)
     {
         //
+    }
+    public function getAllProducts($id){
+        return product::where('store_id', $id)->get()->first();
+    }
+        
+    public function getOrderList($id){
+        $product = $this->getAllProducts($id);
+        $order = order::where('product_id',$product->id)->get()->all();
+        return $order;
+        
     }
 
     /**
