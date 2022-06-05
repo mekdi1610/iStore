@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //User
 Route::get('/user/all',[UserController:: class, 'index']);
 Route::get('/user/{id}', [UserController::class, 'show']);
-Route::post('/user/store',[UserController:: class, 'user']);
+Route::post('/user/store',[UserController:: class, 'store']);
 Route::post('/user/login',[UserController:: class, 'login']);
 Route::put('/user/update/{id}',[UserController:: class, 'update']);
 Route::delete('/user/delete/{id}',[UserController:: class, 'destroy']);
@@ -63,11 +63,11 @@ Route::put('/order/update/{id}',[OrderController:: class, 'update']);
 Route::delete('/order/delete/{id}',[OrderController:: class, 'destroy']);
 
 //Product
-Route::get('/product/all',[productController:: class, 'index']);
-Route::get('/product/{id}', [productController::class, 'show']);
-Route::post('/product/store',[productController:: class, 'store']);
-Route::put('/product/update/{id}',[productController:: class, 'update']);
-Route::delete('/product/delete/{id}',[productController:: class, 'destroy']);
+Route::get('/product/all',[ProductController:: class, 'index']);
+Route::get('/product/{id}', [ProductController::class, 'show']);
+Route::post('/product/store',[ProductController:: class, 'store']);
+Route::put('/product/update/{id}',[ProductController:: class, 'update']);
+Route::delete('/product/delete/{id}',[ProductController:: class, 'destroy']);
 
 //Sale
 Route::get('/sale/all',[SaleController:: class, 'index']);
@@ -85,7 +85,8 @@ Route::delete('/stock/delete/{id}',[StockController:: class, 'destroy']);
 
 //Store
 Route::get('/store/all',[storeController:: class, 'index']);
-Route::get('/store/{id}', [storeController::class, 'show']);
+Route::get('/store/{id}', [storeController::class, 'getAllProducts']);
 Route::post('/store/store',[storeController:: class, 'store']);
+Route::get('/store/getOrder/{id}', [storeController::class, 'getOrderList']);
 Route::put('/store/update/{id}',[storeController:: class, 'update']);
 Route::delete('/store/delete/{id}',[storeController:: class, 'destroy']);
