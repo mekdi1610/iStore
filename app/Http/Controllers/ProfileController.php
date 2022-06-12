@@ -37,12 +37,15 @@ class ProfileController extends Controller
      */
     public function store(StoreprofileRequest $request)
     {
+        
         $profile = new profile;
         $profile->first_name = $request->first_name;
         $profile->middle_name = $request->middle_name;
         $profile->last_name = $request->last_name;
         $profile->save();
-        return $profile;
+        $result = (new UserController)->store($request, $profile->id);
+        if($result)
+        return redirect('/dashboard');
     }
 
     /**

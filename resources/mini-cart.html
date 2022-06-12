@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shopping Cart UI</title>
+    <link rel="stylesheet" type="text/css" href="./style/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900"
+      rel="stylesheet"
+    />
+  
+  </head>
+  <body>
+   <div class="container">
+       <h1>
+           Products
+           <div style="float:right; cursor: pointer;">
+             <span  class="glyphicon glyphicon-shopping-cart my-cart-icon">
+                 <span class="badge badge-notify my-cart-badge">
+
+
+                 </span>
+                 </span>
+           </div>
+       </h1>
+       <button>
+           add new product
+       </button>
+   </div>
+  </body>
+  <script>
+          $('.like-btn').on('click', function() {
+       $(this).toggleClass('is-active');
+    });
+    $('.minus-btn').on('click', function(e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $input = $this.closest('div').find('input');
+        var value = parseInt($input.val());
+
+        if (value> 1) {
+            value = value - 1;
+        } else {
+            value = 0;
+        }
+
+      $input.val(value);
+
+    });
+
+    $('.plus-btn').on('click', function(e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $input = $this.closest('div').find('input');
+        var value = parseInt($input.val());
+
+        if (value <100) {
+            value = value + 1;
+        } else {
+            value =100;
+        }
+
+        $input.val(value);
+    });
+  </script>
+</html>

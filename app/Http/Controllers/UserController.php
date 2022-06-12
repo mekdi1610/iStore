@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\profile;
 class userController extends Controller
 {
     /**
@@ -13,6 +14,11 @@ class userController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function signin()
+    {
+        return view('sotre'); //Login View
+    }
+    
     public function index()
     {
         $user = user::all();
@@ -33,22 +39,22 @@ class userController extends Controller
      * user a newly created resource in storage.
      *
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $user = new User;
-        if($request->password==$request->confirmpassword){
+        // if($request->password==$request->confirmpassword){
         $user->email = $request->email;
         $user->role = $request->role;
-        $user->profile_id = $request->profile_id;
+        $user->profile_id = $id;
        
         $hashedpassword = Hash::make($request->password);
         $user->password = $hashedpassword;
         $user->save();
         return $user;
-        }
-        else{
-            //passwords dont match
-        }
+        // }
+        // else{
+        //     return "null";
+        // }
     }
 
     /**
@@ -71,6 +77,10 @@ class userController extends Controller
     
         $user = $this->getByEmail($request->email);
         if (Hash::check($request->password, $user->password)) {
+            if($user->role=="Admin"){
+                
+                return redirect('/dashboard', $this->index());
+            }
             return $user->id;
             // The passwords match...
         }

@@ -1,0 +1,15 @@
+{
+  "name": "mdb5-free-standard",
+  "version": "1.0.0",
+  "description": "MDB5 Version: FREE 3.8.0",
+  "main": "login.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^3.8.0"
+  }
+}
