@@ -78,11 +78,12 @@ class ProfileController extends Controller
      * @param  \App\Models\profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateprofileRequest $request, profile $profile)
+    public function update(UpdateprofileRequest $request,$id)
     {
-        $profile=profile::find($request->id);
+       
+        $profile=profile::find($id);
         $profile->update($request->all());
-        return $profile;
+        return $request;
     }
 
     /**

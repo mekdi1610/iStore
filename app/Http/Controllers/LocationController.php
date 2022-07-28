@@ -39,10 +39,12 @@ class locationController extends Controller
     {
         $location = new location;
         $location->country = $request->country;
+   
         $location->city = $request->city;
         $location->street = $request->street;
         $location->save();
         return $location;
+
     }
 
     /**

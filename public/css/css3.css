@@ -40,12 +40,6 @@ img{
     padding: 0.6rem 0;
     text-transform: capitalize;
 }
-.form-control{
-padding-left: 15px;
-}
-label{
-    font-size: large;
-}
 .lg-title{
     font-size: 2.5rem;
     font-weight: 500;

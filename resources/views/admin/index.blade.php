@@ -2,7 +2,10 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../css/style.css" />
+   
+  
+    <link rel="stylesheet" href="../../css/style.css" />
+
  
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
@@ -17,30 +20,31 @@
         <span class="logo_name">CRM</span>
       </div>
       <ul class="nav-links">
-        <li>
-          <a href="#" class="active">
+      <li>
+          <a href="./index.html">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="/users">
-            <i class="bx bx-box"></i>
+          <a href="/admin/users">
+            <i class="bx bx-user"></i>
             <span class="links_name">Users</span>
           </a>
         </li>
         <li>
-          <a href="/stores">
-            <i class="bx bx-list-ul"></i>
+          <a href="#" class="active">
+            <i class="bx bx-store"></i>
             <span class="links_name">Stores</span>
           </a>
         </li>
-        <li class="log_out">
+         <li class="log_out">
           <a href="/">
             <i class="bx bx-log-out"></i>
             <span class="links_name">Log out</span>
           </a>
         </li>
+      
       </ul>
     </div>
     <section class="home-section">
@@ -86,6 +90,8 @@
           </div>
         </div>
 
+     
+    
         <div class="sales-boxes">
           <div class="recent-sales box">
             <div class="title">Recent Sales</div>

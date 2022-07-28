@@ -7,6 +7,8 @@ use App\Http\Requests\UpdatestoreRequest;
 use App\Models\store;
 use App\Models\product;
 use App\Models\order;
+use App\Models\User;
+use App\Models\location;
 
 class storeController extends Controller
 {
@@ -20,7 +22,13 @@ class storeController extends Controller
         $store = store::all();
         return $store;
     }
-
+    public function displayStore()
+    {
+        $store = store::all();   
+        $users = user::all();   
+        $locations = location::all();   
+        return view('admin/stores')->with('stores',$store)->with('users', $users)->with('locations', $locations); 
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -88,7 +96,7 @@ class storeController extends Controller
      * @param  \App\Models\store  $store
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatestoreRequest $request, store $store)
+    public function update(UpdatestoreRequest $request)
     {
         $store=store::find($request->id);
         $store->update($request->all());

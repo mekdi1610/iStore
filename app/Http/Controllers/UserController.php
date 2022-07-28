@@ -18,6 +18,13 @@ class userController extends Controller
     {
         return view('sotre'); //Login View
     }
+    public function displayUser()
+    {
+        $users = user::all();   
+        $profiles = profile::all();   
+        return view('admin/users')->with('profiles',$profiles)->with('users', $users); //Login View
+    }
+
     
     public function index()
     {
@@ -73,16 +80,20 @@ class userController extends Controller
         return User::where('email', $email)->get()->first();
     }
     public function login(Request $request){
+       
         $user = new User;
-    
         $user = $this->getByEmail($request->email);
-        if (Hash::check($request->password, $user->password)) {
+        $userData = $user->only(["password", "email"]);
+        $hashedPassword = Hash::make($userData['password']);
+        if(Hash::check($request->password, $userData['password'])) {
             if($user->role=="Admin"){
-                
-                return redirect('/dashboard', $this->index());
+                return view('admin/index');
             }
-            return $user->id;
+        
             // The passwords match...
+        }
+        else{
+            return "bye";
         }
         // return $user;
     }
@@ -99,14 +110,13 @@ class userController extends Controller
     }
 
     
-    public function update(Request $request, user $user)
+    public function update(Request $request)
     {
-       
+        $userData = $request->only(["password", "role"]);
+        $userData['password'] = Hash::make($userData['password']);
+        User::find($request->id)->update($userData);
         $user=user::find($request->id);
-        $hashedpassword = Hash::make($request->password);
-        $request->password = $hashedpassword;
-        $user->update($request->all());
-        return $user;
+        return $user->password;
     }
 
     /**

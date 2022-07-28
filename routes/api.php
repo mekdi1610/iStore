@@ -31,13 +31,17 @@ Route::get('/user/all',[UserController:: class, 'index']);
 Route::get('/user/{id}', [UserController::class, 'show']);
 Route::post('/user/store',[UserController:: class, 'store']);
 Route::post('/user/login',[UserController:: class, 'login']);
-Route::put('/user/update/{id}',[UserController:: class, 'update']);
+Route::post('/admin/users',[UserController:: class, 'login']);
+Route::get('/user/update/{id}',[UserController:: class, 'update']);
+Route::post('/user/update',[UserController:: class, 'update']);
 Route::delete('/user/delete/{id}',[UserController:: class, 'destroy']);
 
 //Profile
 Route::get('/profile/all',[ProfileController:: class, 'index']);
+// Route::get('/profile/update/{id}',[ProfileController:: class, 'update']);
+
 Route::get('/profile/{id}', [ProfileController::class, 'show']);
-Route::post('profile/store',[ProfileController:: class, 'store']);
+Route::post('/profile/store',[ProfileController:: class, 'store']);
 Route::put('/profile/update/{id}',[ProfileController:: class, 'update']);
 Route::delete('/profile/delete/{id}',[ProfileController:: class, 'destroy']);
 
@@ -88,5 +92,5 @@ Route::get('/store/all',[storeController:: class, 'index']);
 Route::get('/store/{id}', [storeController::class, 'getAllProducts']);
 Route::post('/store/store',[storeController:: class, 'store']);
 Route::get('/store/getOrder/{id}', [storeController::class, 'getOrderList']);
-Route::put('/store/update/{id}',[storeController:: class, 'update']);
+Route::post('/store/update',[storeController:: class, 'update']);
 Route::delete('/store/delete/{id}',[storeController:: class, 'destroy']);
