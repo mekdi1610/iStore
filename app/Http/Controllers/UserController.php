@@ -89,6 +89,12 @@ class userController extends Controller
             if($user->role=="Admin"){
                 return view('admin/index');
             }
+            else if($user->role=="buyer"){
+                return view('client/buyer/index');
+            }
+            else if($user->role=="seller"){
+                return view('client/seller/index');
+            }
         
             // The passwords match...
         }

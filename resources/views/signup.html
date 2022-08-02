@@ -20,83 +20,79 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="css/mdb.min.css" />
-    <link rel="stylesheet" href="style/css3.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/mdb.min.css" />
+    <link rel="stylesheet" href="../css/css3.css" />
   </head>
   <body>
     <div class="row">
       <div class="middle-card">
-        <div class="col-sm-5 middle-card">
+        <div class="col-sm-4 middle-card">
           <div class="card text-center">
             <div class="card-body">
-              <h5 class="card-title">Register</h5>
+              <h5 class="card-title">Signup</h5>
               <p class="card-text">
-                <form method="POST" action="/api/profile/store">
-                    <!-- 2 column grid layout with text inputs for the first and last names -->
-                    <div class="row mb-4">
-                      <div class="col">
-                        <div class="form-outline">
-                          <input type="text" id="fname" name="first_name" class="form-control" />
-                          <label class="form-label" for="fname">First name</label>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-outline">
-                          <input type="text" id="mname" name="middle_name" class="form-control" />
-                          <label class="form-label" for="mname">Middle name</label>
-                        </div>
-                      </div>
-                    
-                      <div class="col">
-                        <div class="form-outline">
-                          <input type="text" id="lname" name="last_name" class="form-control" />
-                          <label class="form-label" for="lname">Last name</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                    <!-- Email input -->
-                    <div class="form-outline mb-4">
-                      <input type="email" id="email" name ="email" class="form-control" />
-                      <label class="form-label" for="email">Email address</label>
-                    </div>
-                    </div>
-                    <div class="col">
-                    <!-- Password input -->
-                    <div class="form-outline mb-4">
-                      <input type="password" id="password" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><label class="form-label" for="password">Password</label>
-                    </div>
-                    </div>
-                    <div class="col">
-                    <div class="form-outline mb-4">
-                      <input type="password" id="confirm_password" class="form-control" required/>
-                      <label class="form-label" for="confirm_password">Confirm Password</label>
-                    </div><span id='message'></span>
-                    </div>
-                   
-                    <div class="col">
-                      <div class="form-outline mb-4">
-                        <select class="form-control" name="role" id="role">
-                          <option disabled selected>Select your role</option>
-                          <option name="role" value="buyer">Buyer</option>
-                          <option name="role" value="seller">Seller</option>
-                        </select>
-                      </div>
-                      </div>
+                <!-- <a href="{{route('users.indexView')}}" class="btn btn-sm btn-primary" >
+                  <i class="fas fa-plus"></i> Add New -->
+              </a>
+              <p></p>
+      
+              <form method="POST" action="/api/profile/store">
                 
-                  
-                    <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary btn-block mb-4" id="signup">Sign up</button>
-                  
-                    <!-- Register buttons -->
-                    <div class="text-center">
-                        <p>Already have an account? <a href="/">Login</a></p>
-                       
-                      </div>
-                    </div>
-                  </form>
+                  <!-- Name input -->
+                  <div class="form-outline mb-4">
+                    <input type="name" id="name" name="first_name" class="form-control" />
+                    <label class="form-label" name="name" for="name">First Name</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input type="name" id="name" name="middle_name" class="form-control" />
+                    <label class="form-label" name="name" for="name">Middle Name</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input type="name" id="name" name="last_name" class="form-control" />
+                    <label class="form-label" name="name" for="name">Last Name</label>
+                  </div>
+
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <input type="email" id="email" name="email" class="form-control" />
+                    <label class="form-label" name="email" for="email">Email address</label>
+                  </div>
+                
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <input type="password" id="password" name="password" class="form-control" />
+                    <label class="form-label" for="password">Password</label>
+                  </div>
+
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <input type="password" id="password" name="cpassword" class="form-control" />
+                    <label class="form-label" for="password">Confirm Password</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <select  name="role" id="role"   class="form-control">
+                      <option disabled selected>Role</option>
+                      <option name="role" value="buyer">Buyer</option>
+                      <option name="role" value="seller">Seller</option>
+   
+                    </select>
+                   
+                  </div>
+                  <!-- 2 column grid layout for inline styling -->
+                  <div class="row mb-4">
+                   
+                
+                 
+                  </div>             
+                    <button type="submit" class="btn btn-primary btn-block mb-4" id="signup">Signup</button>
+                  <!-- Register buttons -->
+                  <div class="text-center">
+                    <p>Already member? <a href="/login">Login</a></p>
+                   
+                  </div>
+                </form>
               </p>
             
             </div>
@@ -109,19 +105,5 @@
     <script type="text/javascript" src="js/mdb.min.js"></script>
 
     <script type="text/javascript"></script>
-    <script>
-    $('#confirm_password').on('click', function () {
-      if ($('#password').val() == $('#confirm_password').val()) {
-        // $('#message').html('').css('color', 'green');
-        $('#message').html('Password match').css('display', 'none');
-         $('#signup').prop('disabled', false)
-        
-      } else 
-      $('#signup').prop('disabled', true)
-      $('#message').html('Password dont match').css('font-size', 'small');
-    });
-  </script>
   </body>
 </html>
-
-

@@ -45,7 +45,7 @@ class ProfileController extends Controller
         $profile->save();
         $result = (new UserController)->store($request, $profile->id);
         if($result)
-        return redirect('/dashboard');
+        return redirect('/index');
     }
 
     /**

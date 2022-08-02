@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,9 +28,16 @@ Route::get('/signup', function () {
 Route::get('/dashboard', function () {
     return view('admin/index');
 });
+Route::get('/product', function () {
+    return view('client/seller/product');
+});
+Route::get('/dashboard', function () {
+    return view('client/seller/product');
+});
 
 
 Route::get('/admin/users',[UserController:: class, 'displayUser']);
+Route::get('/product',[ProductController:: class, 'displayProduct']);
 
 Route::get('/admin/stores',[StoreController:: class, 'displayStore']);
 Route::get('/profile', [UserController::class, 'signin']);

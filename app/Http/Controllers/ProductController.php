@@ -70,7 +70,12 @@ class productController extends Controller
            return product::findOrFail($id);
       
     }
-
+    public function displayProduct()
+    {
+        $products = product::all();   
+        return view('client/seller/product')->with('products',$products);
+      
+    }
     /**
      * Show the form for editing the specified resource.
      *
