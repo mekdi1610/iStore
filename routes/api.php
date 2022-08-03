@@ -70,8 +70,8 @@ Route::delete('/order/delete/{id}',[OrderController:: class, 'destroy']);
 Route::get('/product/all',[ProductController:: class, 'index']);
 Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::post('/product/store',[ProductController:: class, 'store']);
-Route::put('/product/update/{id}',[ProductController:: class, 'update']);
-Route::delete('/product/delete/{id}',[ProductController:: class, 'destroy']);
+Route::post('/product/update',[ProductController:: class, 'update']);
+Route::post('/product/delete',[ProductController:: class, 'destroy']);
 
 //Sale
 Route::get('/sale/all',[SaleController:: class, 'index']);

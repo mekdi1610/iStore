@@ -286,8 +286,7 @@
              
                   <a data-mdb-toggle="modal" date-status="update" data-id="{{$store['id']}}" data-name="{{$store['name']}}" data-location="{{$store['location_id']}}" data-status="{{$store['status']}}"  title="Add this item" id="open-AddBookDialog" href="#updateModal"><x-far-edit style="width: 20px;"/></a>
        
-                  <!-- <a data-mdb-toggle="modal" date-status="deactivate" data-id="{{$store['id']}}" title="Deativate this item" id="open-AddBookDialog" href="#deactivateModal"><x-css-remove style="width: 20px;"/></a> -->
-                  </td>
+                                   </td>
 
                 </tr>
                 @endif
