@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,13 +32,12 @@ Route::get('/dashboard', function () {
 Route::get('/product', function () {
     return view('client/seller/product');
 });
-Route::get('/dashboard', function () {
-    return view('client/seller/product');
-});
+
 
 
 Route::get('/admin/users',[UserController:: class, 'displayUser']);
 Route::get('/product',[ProductController:: class, 'displayProduct']);
+Route::get('/category',[CategoryController:: class, 'displayCategory']);
 
 Route::get('/admin/stores',[StoreController:: class, 'displayStore']);
 Route::get('/profile', [UserController::class, 'signin']);

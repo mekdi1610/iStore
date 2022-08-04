@@ -49,7 +49,7 @@ Route::delete('/profile/delete/{id}',[ProfileController:: class, 'destroy']);
 Route::get('/category/all',[CategoryController:: class, 'index']);
 Route::get('/category/{id}', [CategoryController::class, 'show']);
 Route::post('/category/store',[CategoryController:: class, 'store']);
-Route::put('/category/update/{id}',[CategoryController:: class, 'update']);
+Route::post('/category/update',[CategoryController:: class, 'update']);
 Route::delete('/category/delete/{id}',[CategoryController:: class, 'destroy']);
 
 //Location
