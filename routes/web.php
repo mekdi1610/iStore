@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,17 +28,16 @@ Route::get('/signup', function () {
     return view('signup');
 });
 Route::get('/dashboard', function () {
-    return view('admin/index');
-});
-Route::get('/product', function () {
-    return view('client/seller/product');
+    return view('admin-dashboard/index');
 });
 
 
 
 Route::get('/admin/users',[UserController:: class, 'displayUser']);
+Route::get('/profile', [UserController::class, 'signin']);
 Route::get('/product',[ProductController:: class, 'displayProduct']);
 Route::get('/category',[CategoryController:: class, 'displayCategory']);
-
+Route::get('/store',[StoreController:: class, 'displayMainStore']);
+Route::get('/store/product/{id}',[StoreController:: class, 'displayProduct']);
 Route::get('/admin/stores',[StoreController:: class, 'displayStore']);
-Route::get('/profile', [UserController::class, 'signin']);
+

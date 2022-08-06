@@ -96,6 +96,7 @@ class CategoryController extends Controller
         $category=category::find($request->id);
         $category->name = $request->name;
         $category->show = $val;
+        $category->store_id = $request->store_id;
         $category->update();
         return redirect()->back();
     }

@@ -9,6 +9,7 @@ use App\Models\product;
 use App\Models\order;
 use App\Models\User;
 use App\Models\location;
+use App\Models\category;
 
 class storeController extends Controller
 {
@@ -24,10 +25,27 @@ class storeController extends Controller
     }
     public function displayStore()
     {
-        $store = store::all();   
+        $stores = store::all();   
         $users = user::all();   
-        $locations = location::all();   
-        return view('admin/stores')->with('stores',$store)->with('users', $users)->with('locations', $locations); 
+        $locations = location::all();
+      
+        return view('admin/stores')->with('stores',$stores)->with('users', $users)->with('locations', $locations); 
+    }
+    public function displayProduct($id)
+    {
+        $products= product::where('category_id', $id)->get();
+       
+        return view('storeFront/product')->with('products',$products); 
+    }
+    public function displayMainStore()
+    {
+        $stores = store::all();   
+        $users = user::all();   
+        $locations = location::all();
+        $categories = category::all();
+        $products = product::all();   
+        return view('storeFront/index')->with('stores',$stores)->with('users', $users)->with('locations', $locations)->with('categories', $categories)->with('products', $products); 
+ 
     }
     /**
      * Show the form for creating a new resource.
