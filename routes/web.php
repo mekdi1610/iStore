@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SessionController;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +18,22 @@ use App\Http\Controllers\CategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/',[UserController:: class, 'indexView']);
+
 // Route::get('/', function () {
-//     return view('admin-dashboard/index');
+//     Session::forget('user');
+//     return view('storeFront/index');
 // });
-Route::get('/', function () {
+//Home Page
+Route::get('/',[StoreController:: class, 'displayMainStore']);
+Route::get('/login', function() {
+    Session::forget('user');
     return view('index');
 });
+Route::get('/product',[ProductController:: class, 'displayProduct']);
+
+
+
+
 
 Route::get('/signup', function () {
     return view('signup');
@@ -35,9 +46,16 @@ Route::get('/dashboard', function () {
 
 Route::get('/admin/users',[UserController:: class, 'displayUser']);
 Route::get('/profile', [UserController::class, 'signin']);
-Route::get('/product',[ProductController:: class, 'displayProduct']);
+
 Route::get('/category',[CategoryController:: class, 'displayCategory']);
 Route::get('/store',[StoreController:: class, 'displayMainStore']);
 Route::get('/store/product/{id}',[StoreController:: class, 'displayProduct']);
 Route::get('/admin/stores',[StoreController:: class, 'displayStore']);
+
+//Session variables
+Route::get('session/get',[SessionController:: class, 'accessSessionData']);
+Route::get('session/set',[SessionController:: class, 'storeSessionData']);
+Route::get('session/remove',[SessionController:: class, 'deleteSessionData']);
+
+
 

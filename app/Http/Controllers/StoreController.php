@@ -10,6 +10,7 @@ use App\Models\order;
 use App\Models\User;
 use App\Models\location;
 use App\Models\category;
+use Illuminate\Support\Facades\Session;
 
 class storeController extends Controller
 {
@@ -39,6 +40,7 @@ class storeController extends Controller
     }
     public function displayMainStore()
     {
+       //
         $stores = store::all();   
         $users = user::all();   
         $locations = location::all();

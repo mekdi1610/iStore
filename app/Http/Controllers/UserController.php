@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\SessionController;
 
 use App\Models\profile;
-class userController extends Controller
+use Illuminate\Support\Facades\Session;
+
+class userController extends SessionController
 {
     /**
      * Display a listing of the resource.
@@ -20,12 +23,20 @@ class userController extends Controller
     }
     public function displayUser()
     {
-        $users = user::all();   
-        $profiles = profile::all();   
-        return view('admin/users')->with('profiles',$profiles)->with('users', $users); //Login View
+        $value = Session::get('user');
+   
+        if ($value) {
+            $users = user::all();
+            $profiles = profile::all();
+            return view('admin/users')->with('profiles', $profiles)->with('users', $users); //Login View
+
+        }
+        else{
+            return view('index');
+        }
     }
 
-    
+
     public function index()
     {
         $user = user::all();
@@ -53,15 +64,11 @@ class userController extends Controller
         $user->email = $request->email;
         $user->role = $request->role;
         $user->profile_id = $id;
-       
+
         $hashedpassword = Hash::make($request->password);
         $user->password = $hashedpassword;
         $user->save();
-        return $user;
-        // }
-        // else{
-        //     return "null";
-        // }
+        return redirect()->back();
     }
 
     /**
@@ -72,33 +79,30 @@ class userController extends Controller
      */
     public function show($id)
     {
-           return user::findOrFail($id);
-      
+        return user::findOrFail($id);
     }
     public function getByEmail($email)
     {
         return User::where('email', $email)->get()->first();
     }
-    public function login(Request $request){
-       
+    public function login(Request $request)
+    {
         $user = new User;
         $user = $this->getByEmail($request->email);
         $userData = $user->only(["password", "email"]);
         $hashedPassword = Hash::make($userData['password']);
-        if(Hash::check($request->password, $userData['password'])) {
-            if($user->role=="Admin"){
+        if (Hash::check($request->password, $userData['password'])) {
+            Session::put('user', $user->email);
+            if ($user->role == "Admin") {
                 return view('admin/index');
-            }
-            else if($user->role=="buyer"){
-                return view('client/buyer/index');
-            }
-            else if($user->role=="seller"){
+            } else if ($user->role == "buyer") {
+                return redirect('/');
+            } else if ($user->role == "seller") {
                 return view('client/seller/index');
             }
-        
+
             // The passwords match...
-        }
-        else{
+        } else {
             return "bye";
         }
         // return $user;
@@ -115,14 +119,14 @@ class userController extends Controller
         //
     }
 
-    
+
     public function update(Request $request)
     {
         $userData = $request->only(["password", "role"]);
         $userData['password'] = Hash::make($userData['password']);
         User::find($request->id)->update($userData);
-        $user=user::find($request->id);
-        return $user->password;
+        $user = user::find($request->id);
+        return redirect()->back();
     }
 
     /**

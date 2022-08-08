@@ -118,7 +118,7 @@ class productController extends Controller
      */
     public function update(UpdateproductRequest $request)
     {
-        //
+        
         $product=product::find($request->id);
         $product->update($request->all());
         return redirect()->back();

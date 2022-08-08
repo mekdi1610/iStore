@@ -38,27 +38,22 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="#" class="active">
+          <a href="/">
             <i class="bx bx-grid-alt"></i>
-            <span class="links_name">Dashboard</span>
+            <span class="links_name">iStore</span>
           </a>
         </li>
         <li>
-          <a href="./users.html">
+          <a href="#" class="active">
             <i class="bx bx-box"></i>
-            <span class="links_name">Users</span>
+            <span class="links_name">Products</span>
           </a>
         </li>
-        <li>
-          <a href="./stores.html">
-            <i class="bx bx-list-ul"></i>
-            <span class="links_name">Stores</span>
-          </a>
-        </li>
+       
         <li class="log_out">
-          <a href="../index.html">
-            <i class="bx bx-log-out"></i>
-            <span class="links_name">Log out</span>
+          <a href="/login">
+            <i class="bx bx-log-in"></i>
+            <span class="links_name">Login</span>
           </a>
         </li>
       </ul>
@@ -67,17 +62,13 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Dashboard</span>
+          <span class="dashboard">iStore</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
           <i class="bx bx-search"></i>
         </div>
-        <div class="profile-details">
-          <!--<img src="images/profile.jpg" alt="">-->
-          <span class="admin_name">Prem Shahi</span>
-          <i class="bx bx-chevron-down"></i>
-        </div>
+      
       </nav>
 
       <div class="home-content">
@@ -91,14 +82,14 @@
         
        
             
-              <div>{{$product['name']}}</div>
+              <div>  <img src="{{url('/products/'.$product->image)}}"></div>
             
-            </div>
+         
           
             <a data-mdb-toggle="modal" date-show="update" data-id="{{$product['id']}}" data-name="{{$product['name']}}" data-detail="{{$product['detail']}}" data-code="{{$product['code']}}" data-model="{{$product['model']}}" data-unit_price="{{$product['unit_price']}}" data-category_id="{{$product['category_id']}}"  title="Add this item" id="open-AddBookDialog" href="#exampleModal">
-       
-            <i class="bx bx-cart-alt cart"></i>
-</a>
+            <div style="color:black">{{$product['name']}}</div>
+           
+</a>   </div>
           </div>
 
           @endforeach
@@ -130,7 +121,7 @@
                       ></button>
                     </div>
                     <div class="modal-body card-text">
-                    <form action="/api/product/store" method="POST" enctype="multipart/form-data">
+                    <form action="/api/order/store" method="POST" enctype="multipart/form-data">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <div class="form-outline mb-4">
                         <img src="{{url('/products/'.$product->image)}}" alt="Image"/><!-- 2 column grid layout with text inputs for the first and last names -->

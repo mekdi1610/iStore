@@ -189,7 +189,7 @@
                       ></button>
                     </div>
                     <div class="modal-body card-text">
-                    <form action="/api/product/update" method="POST">
+                    <form action="/api/product/update" method="PUT">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <div class="form-outline mb-4">
                         <label class="form-label" for="name" style="display:none;">ID</label>

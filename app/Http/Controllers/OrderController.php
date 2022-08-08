@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreorderRequest;
 use App\Http\Requests\UpdateorderRequest;
 use App\Models\order;
+use Illuminate\Support\Facades\Session;
 
 class orderController extends Controller
 {
@@ -37,6 +38,9 @@ class orderController extends Controller
      */
     public function store(StoreorderRequest $request)
     {
+        $value = Session::get('user');
+    
+        if($value){
         $order = new order;
         $order->product_id = $request->product_id;
         $order->user_id = $request->user_id;
@@ -44,6 +48,10 @@ class orderController extends Controller
         $order->quantity = $request->quantity;
         $order->save();
         return $order;
+        }
+        else{
+            return redirect('/login');
+        }
     }
 
     /**

@@ -84,20 +84,12 @@ class CategoryController extends Controller
      */
     public function update(UpdatecategoryRequest $request)
     {
-         $val = 0;
-        if($request->show=="on"){
-            $val = 1;
        
-        }
-        else{
-            $val =0;
-        } 
          
         $category=category::find($request->id);
-        $category->name = $request->name;
-        $category->show = $val;
-        $category->store_id = $request->store_id;
-        $category->update();
+    
+       
+        $category->update($request->all());
         return redirect()->back();
     }
 

@@ -49,7 +49,7 @@ Route::delete('/profile/delete/{id}',[ProfileController:: class, 'destroy']);
 Route::get('/category/all',[CategoryController:: class, 'index']);
 Route::get('/category/{id}', [CategoryController::class, 'show']);
 Route::post('/category/store',[CategoryController:: class, 'store']);
-Route::post('/category/update',[CategoryController:: class, 'update']);
+Route::put('/category/update',[CategoryController:: class, 'update']);
 Route::delete('/category/delete/{id}',[CategoryController:: class, 'destroy']);
 
 //Location
@@ -70,7 +70,7 @@ Route::delete('/order/delete/{id}',[OrderController:: class, 'destroy']);
 Route::get('/product/all',[ProductController:: class, 'index']);
 Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::post('/product/store',[ProductController:: class, 'store']);
-Route::post('/product/update',[ProductController:: class, 'update']);
+Route::put('/product/update',[ProductController:: class, 'update']);
 Route::post('/product/delete',[ProductController:: class, 'destroy']);
 
 //Sale
