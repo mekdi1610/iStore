@@ -21,21 +21,27 @@
       </div>
       <ul class="nav-links">
       <li>
-          <a href="./index.html"  class="active">
+          <a href="./index.html"   class="active">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
           <a href="/product">
-            <i class="bx bx-user"></i>
+          <i class="bx bx-cart"></i>
             <span class="links_name">Product</span>
           </a>
         </li>
         <li>
           <a href="/category">
-            <i class="bx bx-store"></i>
+            <i class="bx bx-sitemap"></i>
             <span class="links_name">Category</span>
+          </a>
+        </li>
+        <li>
+          <a href="/order">
+            <i class="bx bx-clipboard"></i>
+            <span class="links_name">Order</span>
           </a>
         </li>
          <li class="log_out">

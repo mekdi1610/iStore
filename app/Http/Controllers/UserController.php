@@ -92,7 +92,7 @@ class userController extends SessionController
         $userData = $user->only(["password", "email"]);
         $hashedPassword = Hash::make($userData['password']);
         if (Hash::check($request->password, $userData['password'])) {
-            Session::put('user', $user->email);
+            Session::put('user', $user);
             if ($user->role == "Admin") {
                 return view('admin/index');
             } else if ($user->role == "buyer") {

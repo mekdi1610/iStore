@@ -7,13 +7,15 @@
     "require": {
         "php": "^7.3|^8.0",
         "andreiio/blade-remix-icon": "^1.1",
+        "codeat3/blade-teeny-icons": "^1.8",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "khatabwedaa/blade-css-icons": "^1.1",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "owenvoke/blade-fontawesome": "^1.10"
+        "owenvoke/blade-fontawesome": "^1.10",
+        "realrashid/sweet-alert": "^5.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

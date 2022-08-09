@@ -39,15 +39,21 @@
           </a>
         </li>
         <li>
-          <a href="/product" class="active">
-            <i class="bx bx-user"></i>
+          <a href="/product"   class="active">
+          <i class="bx bx-cart" ></i>
             <span class="links_name">Product</span>
           </a>
         </li>
         <li>
           <a href="/category">
-            <i class="bx bx-product"></i>
+            <i class="bx bx-sitemap"></i>
             <span class="links_name">Category</span>
+          </a>
+        </li>
+        <li>
+          <a href="/order" >
+            <i class="bx bx-clipboard"></i>
+            <span class="links_name">Order</span>
           </a>
         </li>
          <li class="log_out">
@@ -58,6 +64,7 @@
         </li>
       
       </ul>
+  
     </div>
     <section class="home-section">
       <nav>

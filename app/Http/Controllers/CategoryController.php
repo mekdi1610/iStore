@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorecategoryRequest;
 use App\Http\Requests\UpdatecategoryRequest;
 use App\Models\category;
+use App\Models\store;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
@@ -58,9 +60,10 @@ class CategoryController extends Controller
     }
     public function displayCategory()
     {
-        $categories = category::all();
-        //$products = product::all();   
-        return view('client/seller/category')->with('categories',$categories);
+        $value = Session::get('user');
+        $store = store::where('user_id', $value->id)->get()->first();
+        $categories = category::where('store_id', $store->id)->get();
+        return view('client/seller/category')->with('categories',$categories)->with('users', $value);
       
     }
 

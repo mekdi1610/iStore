@@ -68,10 +68,17 @@
           <input type="text" placeholder="Search..." />
           <i class="bx bx-search"></i>
         </div>
+        <div class="profile-details">
+          <!--<img src="images/profile.jpg" alt="">-->
+          <span class="admin_name">{{$users['email']}}</span>
+          <i class="bx bx-chevron-down"></i>
+        </div>
       
       </nav>
 
+
       <div class="home-content">
+      @include('flash-message')
         <div class="overview-boxes">
         
         @foreach($products ?? '' as $product)
@@ -132,30 +139,30 @@
                         
                         </div>
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="name" style="font-size: 1rem;">Name</label>
-                          <input type="text" class="form-control" id = "name" name="name" disabled  />
+                         
+                          <input type="text" class="form-control" id = "name" name="name" disabled style="border:0px" />
                         
-                        </div>
-
-                        <div class="form-outline mb-4">
-                        <label class="form-label" for="name" style="font-size: 1rem;">Detail</label>
-                        <input type="text" class="form-control" id = "detail" name="detail" disabled  />
+                   
+                        <input type="text" class="form-control" id = "detail" name="detail" disabled style="border:0px"  />
                      
-                        </div>
-                        <div class="form-outline mb-4">
-                        <label class="form-label" for="name" style="font-size: 1rem;">Code</label>
-                        <input type="text" class="form-control" id = "code" name="code" disabled />
+               
+                        <input type="text" class="form-control" id = "code" name="code" disabled style="border:0px" />
+                       
+                   
+                        <input type="text" class="form-control" id = "model" name="model"  disabled style="border:0px" />
+                       
+                    
+                        <input type="text" class="form-control" id = "unit_price" name="unit_price" disabled style="border:0px" />
                        
                         </div>
-
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="name" style="font-size: 1rem;">Model</label>
-                        <input type="text" class="form-control" id = "model" name="model"  disabled />
+                        <label class="form-label" for="name" style="font-size: 1rem;">Quantity</label>
+                        <input type="text" class="form-control" id = "quantity" name="quantity" />
                        
                         </div>
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="name" style="font-size: 1rem;">Unit Price</label>
-                        <input type="text" class="form-control" id = "unit_price" name="unit_price" disabled />
+                        <label class="form-label" for="name" style="font-size: 1rem;">Total</label>
+                        <input type="text" class="form-control" id = "total" name="total" onclick="computeQuantity()" readonly/>
                        
                         </div>
                        
@@ -203,6 +210,14 @@ $(document).on("click", "#open-AddBookDialog", function () {
  
 });
     </script>
+    <script>
+      function computeQuantity(){
+        var unit_price = document.getElementById("unit_price").value;
+        var quantity = document.getElementById("quantity").value;
+        var total = unit_price*quantity;
+        document.getElementById("total").value = total;
+      }
+      </script>
 
 
 

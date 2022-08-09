@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Session;
 
@@ -45,12 +46,15 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/admin/users',[UserController:: class, 'displayUser']);
+Route::get('/admin/stores',[StoreController:: class, 'displayStore']);
 Route::get('/profile', [UserController::class, 'signin']);
 
 Route::get('/category',[CategoryController:: class, 'displayCategory']);
 Route::get('/store',[StoreController:: class, 'displayMainStore']);
 Route::get('/store/product/{id}',[StoreController:: class, 'displayProduct']);
-Route::get('/admin/stores',[StoreController:: class, 'displayStore']);
+Route::get('/order',[OrderController:: class, 'displayOrder']);
+
+
 
 //Session variables
 Route::get('session/get',[SessionController:: class, 'accessSessionData']);

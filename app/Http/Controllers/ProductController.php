@@ -7,6 +7,9 @@ use App\Http\Requests\UpdateproductRequest;
 use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\category;
+use App\Models\store;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Session;
 
 class productController extends Controller
 {
@@ -74,10 +77,11 @@ class productController extends Controller
         $product->code = $request->code;
         $product->model = $request->model;
        // $product->image = $request->image;
-        $product->store_id = 1;
+        //$product->store_id = 1;
         $product->unit_price = $request->unit_price;
         $product->save();
-        return $product;
+        Notification::send('Congrats', 'You\'ve Successfully Registered');
+      
     }
 
     /**
@@ -93,8 +97,10 @@ class productController extends Controller
     }
     public function displayProduct()
     {
-        $categories = category::all();
-        $products = product::all();   
+        $value = Session::get('user');
+        $store = store::where('user_id', $value->id)->get()->first();
+        $products = product::where('store_id', $store->id)->get();
+        $categories = category::where('store_id', $store->id)->get();
         return view('client/seller/product')->with('products',$products)->with('categories',$categories);
       
     }
@@ -118,9 +124,11 @@ class productController extends Controller
      */
     public function update(UpdateproductRequest $request)
     {
-        
+      
         $product=product::find($request->id);
+       
         $product->update($request->all());
+        return $product;
         return redirect()->back();
     }
 

@@ -34,19 +34,19 @@ class storeController extends Controller
     }
     public function displayProduct($id)
     {
+        $value = Session::get('user');
         $products= product::where('category_id', $id)->get();
        
-        return view('storeFront/product')->with('products',$products); 
+        return view('storeFront/product')->with('products',$products)->with('users', $value); 
     }
     public function displayMainStore()
     {
-       //
-        $stores = store::all();   
-        $users = user::all();   
+        $value = Session::get('user');
+        $stores = store::all();     
         $locations = location::all();
         $categories = category::all();
         $products = product::all();   
-        return view('storeFront/index')->with('stores',$stores)->with('users', $users)->with('locations', $locations)->with('categories', $categories)->with('products', $products); 
+        return view('storeFront/index')->with('stores',$stores)->with('users', $value)->with('locations', $locations)->with('categories', $categories)->with('products', $products); 
  
     }
     /**

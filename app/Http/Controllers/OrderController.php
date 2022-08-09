@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreorderRequest;
 use App\Http\Requests\UpdateorderRequest;
 use App\Models\order;
+use App\Models\product;
+use App\Models\store;
+use App\Models\user;
+use App\Models\profile;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Session;
 
 class orderController extends Controller
@@ -39,19 +44,30 @@ class orderController extends Controller
     public function store(StoreorderRequest $request)
     {
         $value = Session::get('user');
-    
         if($value){
         $order = new order;
-        $order->product_id = $request->product_id;
-        $order->user_id = $request->user_id;
-        $order->status = $request->status;
+        $order->product_id = $request->id;
+        $order->user_id = $value->id;
+        $order->status = "active";
         $order->quantity = $request->quantity;
         $order->save();
-        return $order;
+        return back()->with('success','Your order was successful!');
+      
         }
         else{
             return redirect('/login');
         }
+    }
+    public function displayOrder()
+    {
+        
+        $value = Session::get('user');
+        $store = store::where('user_id', $value->id)->get()->first();
+        $products = product::where('store_id', $store->id)->get();
+        $orders = order::all();
+        $profiles = profile::all();
+        return view('client/seller/order')->with('orders',$orders)->with('products', $products)->with('profiles', $profiles);
+      
     }
 
     /**
@@ -62,7 +78,7 @@ class orderController extends Controller
      */
     public function show($id)
     {
-           return order::findOrFail($id);
+        return order::findOrFail($id);
       
     }
 

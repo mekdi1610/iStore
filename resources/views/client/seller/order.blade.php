@@ -19,10 +19,6 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> 
-
   
 
     <link rel="stylesheet" href="../css/mdb.min.css" />
@@ -31,7 +27,7 @@
   </head>
   <body>
   <div class="sidebar">
-      <div class="logo-shows">
+      <div class="logo-details">
         <i class="bx bxl-c-plus-plus"></i>
         <span class="logo_name">CRM</span>
       </div>
@@ -49,13 +45,13 @@
           </a>
         </li>
         <li>
-          <a href="/category"   class="active">
+          <a href="/category">
             <i class="bx bx-sitemap"></i>
             <span class="links_name">Category</span>
           </a>
         </li>
         <li>
-          <a href="/order">
+          <a href="/order"  class="active">
             <i class="bx bx-clipboard"></i>
             <span class="links_name">Order</span>
           </a>
@@ -76,7 +72,7 @@
           <span class="dashboard">Dashboard</span>
         </div>
 
-        <div class="profile-shows">
+        <div class="profile-details">
           <!--<img src="images/profile.jpg" alt="">-->
           <span class="admin_name">Prem Shahi</span>
           <i class="bx bx-chevron-down"></i>
@@ -87,16 +83,9 @@
         <div class="sales-boxes">
           <div class="recent-sales box">
             <div class="title">
-              Categories &nbsp;&nbsp;&nbsp;
+              Products &nbsp;&nbsp;&nbsp;
               <!-- Button trigger modal -->
-              <button
-                type="button"
-                class="btn btn-primary create-btn"
-                data-mdb-toggle="modal"
-                data-mdb-target="#exampleModal"
-              >
-                Add new category
-              </button>
+            
 
               <!-- Modal -->
               <div
@@ -110,7 +99,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">
-                        Add new category
+                        Add new product
                       </h5>
 
                       <button
@@ -121,9 +110,12 @@
                       ></button>
                     </div>
                     <div class="modal-body card-text">
-                    <form action="/api/category/store" method="POST" enctype="multipart/form-data">
+                    <form action="/api/product/store" method="POST" enctype="multipart/form-data">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
-                     
+                        <div class="form-outline mb-4">
+                        <label class="form-label" for="name" style="font-size: 1rem;">Image</label>
+                        <input type="file" class="form-control" required name="image">
+                                              </div>
  
                         <div class="form-outline mb-4">
                           <input type="text" class="form-control" name="name"  />
@@ -131,10 +123,25 @@
                         </div>
 
                         <div class="form-outline mb-4">
-                        <input type="text" class="form-control" name="show"  />
-                        <input style="width: 20px;" data-id="show" class="toggle-class" type="checkbox" data-onstyle="primary" data-offstyle="gray" data-toggle="toggle" data-on="Active" data-off="InActive" >
-                   </div>
-                        
+                        <input type="text" class="form-control" name="detail"  />
+                        <label class="form-label" for="name" style="font-size: 1rem;">Detail</label>
+                        </div>
+                        <div class="form-outline mb-4">
+                        <input type="text" class="form-control" name="code"  />
+                        <label class="form-label" for="name" style="font-size: 1rem;">Code</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="text" class="form-control" name="model"  />
+                        <label class="form-label" for="name" style="font-size: 1rem;">Model</label>
+                        </div>
+                        <div class="form-outline mb-4">
+                        <input type="text" class="form-control" name="unit_price"  />
+                        <label class="form-label" for="name" style="font-size: 1rem;">Unit Price</label>
+                        </div>
+                        <div class="form-outline mb-4">
+                   
+                        </div>
                         <div class="modal-footer">
                       <button
                         type="button"
@@ -165,7 +172,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">
-                        Update category
+                        Update Product
                       </h5>
 
                       <button
@@ -176,7 +183,7 @@
                       ></button>
                     </div>
                     <div class="modal-body card-text">
-                    <form action="/api/category/update" method="PUT">
+                    <form action="/api/product/update" method="PUT">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <div class="form-outline mb-4">
                         <label class="form-label" for="name" style="display:none;">ID</label>
@@ -190,10 +197,28 @@
                         </div>
 
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="name" style="font-size: 1rem;">Show</label>
-                        <input style="width: 20px;" name ="show" data-id="show" class="toggle-class" type="checkbox" data-onstyle="primary" data-offstyle="gray" data-toggle="toggle" data-on="Active" data-off="InActive" >
-               
+                        <label class="form-label" for="name" style="font-size: 1rem;">Detail</label>
+                        <input type="text" class="form-control" id = "detail" name="detail"  />
+                     
                         </div>
+                        <div class="form-outline mb-4">
+                        <label class="form-label" for="name" style="font-size: 1rem;">Code</label>
+                        <input type="text" class="form-control" id = "code" name="code"  />
+                       
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <label class="form-label" for="name" style="font-size: 1rem;">Model</label>
+                        <input type="text" class="form-control" id = "model" name="model"  />
+                       
+                        </div>
+                        <div class="form-outline mb-4">
+                        <label class="form-label" for="name" style="font-size: 1rem;">Unit Price</label>
+                        <input type="text" class="form-control" id = "unit_price" name="unit_price"  />
+                       
+                        </div>
+                        <div class="form-outline mb-4">
+                     
                         <div class="modal-footer">
                       <button
                         type="button"
@@ -223,7 +248,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">
-                        Delete category
+                        Delete Product
                       </h5>
 
                       <button
@@ -234,7 +259,7 @@
                       ></button>
                     </div>
                     <div class="modal-body card-text">
-                    <form action="/api/category/delete" method="POST">
+                    <form action="/api/product/delete" method="POST">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <div class="form-outline mb-4">
                         <label class="form-label" for="name">ID</label>
@@ -242,7 +267,7 @@
                         
                         </div>
                         <div class="form-outline mb-4">
-                       <h6> Are you sure you want to delete this category?</h6>
+                       <h6> Are you sure you want to delete this product?</h6>
                         
                         </div>
                         <div class="modal-footer">
@@ -268,41 +293,42 @@
             <table class="table table-hover align-middle mb-0 bg-white">
               <thead class="bg-light">
                 <tr>
-                 
-                  <th>Name</th>
-                  <th>Show</th>
                   <th>Date</th>
-
-                  <th>Actions</th>
+                  <th>Product Name</th>
+                  
+                  <th>Quantity</th>
+                  <th>Confirm Sale</th>
                 </tr>
               </thead>
               <tbody>
-
-              @foreach($categories ?? '' as $category)
-  
-                <tr>
+              @foreach($orders ?? '' as $order)
+              @foreach($products ?? '' as $product)
               
-                  <td>
-                  <p class="fw-normal mb-1"> {{$category['name']}} </p>
+              @if($product->id==$order->product_id)
+                <tr>
+                <td>
+                    <div class="ms-3">
+                    <p class="fw-normal mb-1"> {{$order['created_at']}} </p>
+                       </div>
                   </td>
-
                   <td>
-                  <input style="width: 20px;" data-id="{{$category->id}}" class="toggle-class" type="checkbox" data-onstyle="primary" data-offstyle="gray" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $category->show ? 'checked' : '' }} >
-                    </td>
-
-                  <td>
-                  <p class="fw-normal mb-1"> {{$category['created_at']}} </p>
+                    <div class="ms-3">
+                    <p class="fw-normal mb-1"> {{$product['name']}} </p>
+                       </div>
                   </td>
+                  <td> <p class="fw-normal mb-1"> {{$order['quantity']}} </p></td>
 
 
             <td>
              
-            <a data-mdb-toggle="modal" date-show="update" data-id="{{$category['id']}}" data-name="{{$category['name']}}" data-show="{{$category['show']}}" title="Add this item" id="open-AddBookDialog" href="#updateModal"><x-far-edit style="width: 20px;"/></a>
-       
-                            </td>
+               
+             
+                  <a data-mdb-toggle="modal" date-status="update" data-id="{{$order['id']}}" data-product_id="{{$order['product_id']}}" data-quantity="{{$order['quantity']}}" title="Add this item" id="open-AddBookDialog" href="#updateModal"><x-tni-tick-o style="width: 20px;"/></a>
+                  </td>
 
                 </tr>
-         
+                @endif
+                @endforeach
                 @endforeach
                
 
@@ -316,15 +342,21 @@
     $(document).on("click", "#open-AddBookDialog", function () {
      var id=$(this).data('id');
      var name = $(this).data('name');
-     var show = $(this).data('show');
-
+     var detail = $(this).data('detail');
+     var code = $(this).data('code');
+     var model = $(this).data('model');
+     var unit_price = $(this).data('unit_price');
+     var category_id = $(this).data('category_id');
 
     
     //  var userId = $(this).data('id');
     $(".modal-body #id").val( id );
      $(".modal-body #name").val( name );
-     $(".modal-body #show").val( show );
-
+     $(".modal-body #detail").val( detail );
+     $(".modal-body #code").val( code );
+     $(".modal-body #model").val( model );
+     $(".modal-body #unit_price").val( unit_price );
+     $(".modal-body #category_id").val( category_id );
      
    
  
