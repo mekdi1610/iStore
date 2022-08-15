@@ -45,7 +45,7 @@
           </a>
         </li>
         <li>
-          <a href="#" class="active">
+          <a href="/admin/stores"   class="active">
             <i class="bx bx-store"></i>
             <span class="links_name">Stores</span>
           </a>
@@ -64,15 +64,15 @@
           <i class="bx bx-menu sidebarBtn"></i>
           <span class="dashboard">Dashboard</span>
         </div>
-
         <div class="profile-details">
           <!--<img src="images/profile.jpg" alt="">-->
-          <span class="admin_name">Prem Shahi</span>
+          <span class="admin_name">{{$loggedin['email']}}</span>
           <i class="bx bx-chevron-down"></i>
         </div>
       </nav>
 
       <div class="home-content">
+      @include('flash-message')
         <div class="sales-boxes">
           <div class="recent-sales box">
             <div class="title">
@@ -122,7 +122,7 @@
                         <select  name="location_id" class="form-control">
                                   <option disabled selected>Select Location</option>
                                   @foreach($locations ?? '' as $location)
-                                  <option name="location_id" value="{{$location['id']}}"> {{$location['country']}},{{$location['city']}},{{$location['street']}}</option>
+                                  <option name="location_id" value="{{$location['id']}}" style="font-size: 1rem;"> {{$location['country']}},{{$location['city']}},{{$location['street']}}</option>
                                   @endforeach
                                 </select>
 
@@ -134,7 +134,9 @@
                         <select  name="user_id" class="form-control">
                                   <option disabled selected>Select Owner</option>
                                   @foreach($users ?? '' as $user)
-                                  <option name="user_id" value="{{$user['id']}}"> {{$user['email']}},{{$user['role']}}</option>
+                                  @if($user['role']=='Seller')
+                                  <option name="user_id" value="{{$user['id']}}" style="font-size: 1rem;"> {{$user['email']}},{{$user['role']}}</option>
+                                  @endif
                                   @endforeach
                                 </select>
                               
@@ -195,31 +197,31 @@
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <div class="form-outline mb-4" style="display:none;">
                         <label class="form-label" for="name">ID</label>
-                          <input type="text" id="id" class="form-control" name="id"/>
+                          <input type="text" id="id" class="form-control" name="id" style="font-size: 1rem;"/>
                         
                         </div>
 
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="name" style="font-size: 1.2rem;">Name</label>
-                          <input type="text" id="name" class="form-control" name="name"/>
+                        <label class="form-label" for="name" style="font-size: 1rem;">Name</label>
+                          <input type="text" id="name" class="form-control" name="name" style="font-size: 1rem;"/>
                         
                         </div>
 
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="location"  style="font-size: 1.2rem;"
+                        <label class="form-label" for="location"  style="font-size: 1rem;"
                                 >Location</label
                               >
                                 <select  name="location_id" class="form-control">
                                   <option disabled selected>Select Location</option>
                                   @foreach($locations ?? '' as $location)
-                                  <option name="location_id" value="{{$location['id']}}"> {{$location['country']}},{{$location['city']}},{{$location['street']}}</option>
+                                  <option name="location_id" value="{{$location['id']}}" style="font-size: 1rem;"> {{$location['country']}},{{$location['city']}},{{$location['street']}}</option>
                                   @endforeach
                                 </select>
                               
                               </div>
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="status"  style="font-size: 1.2rem;">Status</label>
-                        <select  name="status" class="form-control">
+                        <label class="form-label" for="status"  style="font-size: 1rem;">Status</label>
+                        <select  name="status" class="form-control" style="font-size: 1rem;">
                                   <option disabled selected>Select Status</option>
                                   <option name="status" value="Active"> Activate</option>
                                   <option name="status" value="Deactive"> Deactivate</option>

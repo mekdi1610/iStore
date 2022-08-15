@@ -28,7 +28,7 @@ class userController extends SessionController
         if ($value) {
             $users = user::all();
             $profiles = profile::all();
-            return view('admin/users')->with('profiles', $profiles)->with('users', $users); //Login View
+            return view('admin/users')->with('profiles', $profiles)->with('users', $users)->with('loggedin', $value); //Login View
 
         }
         else{
@@ -95,10 +95,10 @@ class userController extends SessionController
             Session::put('user', $user);
             if ($user->role == "Admin") {
                 return view('admin/index');
-            } else if ($user->role == "buyer") {
+            } else if ($user->role == "Buyer") {
                 return redirect('/');
-            } else if ($user->role == "seller") {
-                return view('client/seller/index');
+            } else if ($user->role == "Seller") {
+                return redirect('client/seller');
             }
 
             // The passwords match...

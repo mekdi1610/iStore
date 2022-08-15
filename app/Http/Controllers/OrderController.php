@@ -55,7 +55,7 @@ class orderController extends Controller
       
         }
         else{
-            return redirect('/login');
+            return redirect('/login')->with('Please login to place your order');;
         }
     }
     public function displayOrder()
@@ -66,7 +66,7 @@ class orderController extends Controller
         $products = product::where('store_id', $store->id)->get();
         $orders = order::all();
         $profiles = profile::all();
-        return view('client/seller/order')->with('orders',$orders)->with('products', $products)->with('profiles', $profiles);
+        return view('client/seller/order')->with('orders',$orders)->with('products', $products)->with('profiles', $profiles)->with('users',$value);
       
     }
 
@@ -100,7 +100,7 @@ class orderController extends Controller
      * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateorderRequest $request, order $order)
+    public function update(UpdateorderRequest $request)
     {
         //
         $order=order::find($request->id);

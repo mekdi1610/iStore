@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoresaleRequest;
 use App\Http\Requests\UpdatesaleRequest;
+use App\Http\Requests\UpdateorderRequest;
 use App\Models\sale;
+use App\Models\order;
 
 class saleController extends Controller
 {
@@ -39,8 +41,16 @@ class saleController extends Controller
     {
         $sale = new sale;
         $sale->order_id = $request->order_id;
-        $sale->save();
-        return $sale;
+        $saleIn = sale::where('order_id', $request->order_id)->get()->count();
+        if($saleIn==0){
+            $sale->save();
+        }
+     
+        $order=order::find($request->order_id);
+        $request->status = "Inactive";
+        $array = array('id' => $request->order_id, 'status' => 'Inactive');
+        $order->update($array);
+        return back()->with('success','Sale Confirmed!');
     }
 
     /**

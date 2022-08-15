@@ -3,7 +3,7 @@
  *   Version: FREE 3.8.0
  * 
  * 
- *   Copyright: Material Design for Bootstrap
+ *   Copyright: iStore
  *   https://mdbootstrap.com/
  * 
  *   Read the license: https://mdbootstrap.com/general/license/

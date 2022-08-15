@@ -39,16 +39,13 @@
           <i class="bx bx-menu sidebarBtn"></i>
           <span class="dashboard">iStore</span>
         </div>
-        
-        <div class="search-box">
-          <input type="text" placeholder="Search..." />
-          <i class="bx bx-search"></i>
-        </div>
         <div class="profile-details">
           <!--<img src="images/profile.jpg" alt="">-->
-          <span class="admin_name">{{$users['email']}}</span>
+          <span class="admin_name">{{$users['email'] ?? 'Login?'}}</span>
           <i class="bx bx-chevron-down"></i>
         </div>
+        
+
    
       </nav>
 
@@ -61,9 +58,9 @@
           <div class="box">
             <div class="">
             <a href="{{ url('store/product/'.$category->id) }}">
-       
+            <x-bx-category />
             
-              <div class="number">{{$category['name']}}</div>
+              <div class="number" style="color: black;">{{$category['name']}}</div>
               </a>
             </div>
           

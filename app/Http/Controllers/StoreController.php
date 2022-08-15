@@ -26,11 +26,12 @@ class storeController extends Controller
     }
     public function displayStore()
     {
+        $value = Session::get('user');
         $stores = store::all();   
         $users = user::all();   
         $locations = location::all();
       
-        return view('admin/stores')->with('stores',$stores)->with('users', $users)->with('locations', $locations); 
+        return view('admin/stores')->with('stores',$stores)->with('users', $users)->with('locations', $locations)->with('loggedin', $value); 
     }
     public function displayProduct($id)
     {
@@ -120,7 +121,7 @@ class storeController extends Controller
     {
         $store=store::find($request->id);
         $store->update($request->all());
-        return $store;
+        return back()->with('success','Updated!');
     }
 
     /**

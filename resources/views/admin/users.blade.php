@@ -39,13 +39,13 @@
           </a>
         </li>
         <li>
-          <a href="/admin/users">
+          <a href="/admin/users"  class="active">
             <i class="bx bx-user"></i>
             <span class="links_name">Users</span>
           </a>
         </li>
         <li>
-          <a href="#" class="active">
+          <a href="/admin/stores">
             <i class="bx bx-store"></i>
             <span class="links_name">Stores</span>
           </a>
@@ -67,12 +67,13 @@
 
         <div class="profile-details">
           <!--<img src="images/profile.jpg" alt="">-->
-          <span class="admin_name">Prem Shahi</span>
+          <span class="admin_name">{{$loggedin['email']}}</span>
           <i class="bx bx-chevron-down"></i>
         </div>
       </nav>
 
       <div class="home-content">
+      @include('flash-message')
         <div class="sales-boxes">
           <div class="recent-sales box">
             <div class="title">
@@ -119,9 +120,9 @@
                               <input
                                 type="text"
                                 id="fname" name="first_name"
-                                class="form-control"
+                                class="form-control" style="font-size: 1rem;"
                               />
-                              <label class="form-label" for="fname">First name</label
+                              <label class="form-label" for="fname" style="font-size: 1rem;">First name</label
                               >
                             </div>
                           </div>
@@ -130,9 +131,9 @@
                               <input
                                 type="text"
                                 id="mname" name="middle_name"
-                                class="form-control"
+                                class="form-control" style="font-size: 1rem;"
                               />
-                              <label class="form-label" for="mname"
+                              <label class="form-label" for="mname" style="font-size: 1rem;"
                                 >Middle name</label
                               >
                             </div>
@@ -142,8 +143,8 @@
                         <!-- Email input -->
                         <div class="col">
                           <div class="form-outline mb-4">
-                          <input type="lnmae" id="lname" name="last_name" class="form-control" />
-                          <label class="form-label" for="email"
+                          <input type="lnmae" id="lname" name="last_name" class="form-control" style="font-size: 1rem;"/>
+                          <label class="form-label" for="email" style="font-size: 1rem;"
                             >Last Name</label
                           >
                         </div>
@@ -151,8 +152,8 @@
                         </div>
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                          <input type="email" id="email" name="email" class="form-control" />
-                          <label class="form-label" for="email"
+                          <input type="email" id="email" name="email" class="form-control" style="font-size: 1rem;" />
+                          <label class="form-label" for="email" style="font-size: 1rem;"
                             >Email address</label
                           >
                         </div>
@@ -162,9 +163,9 @@
                           <input
                             type="password"
                             id="password" name="password"
-                            class="form-control"
+                            class="form-control" style="font-size: 1rem;"
                           />
-                          <label class="form-label" for="password"
+                          <label class="form-label" for="password" style="font-size: 1rem;"
                             >Password</label
                           >
                         </div>
@@ -173,21 +174,21 @@
                               <input
                                 type="password"
                                 id="confirm_password" name="confirm_password"
-                                class="form-control"
+                                class="form-control" style="font-size: 1rem;"
                               />
-                              <label class="form-label" for="confirm_password"
+                              <label class="form-label" for="confirm_password" style="font-size: 1rem;"
                                 >Confirm password</label
                               >
                             </div>
                            
                               <div class="form-outline mb-4">
-                                <select  name="role" id="role"   class="form-control">
+                                <select  name="role" id="role"   class="form-control" style="font-size: 1rem;">
                                   <option disabled selected>Select your role</option>
                                   <option name="role" value="buyer">Buyer</option>
                                   <option name="role" value="seller">Seller</option>
                                   <option name="role" value="admin">Admin</option>
                                 </select>
-                                <label class="form-label" for="confirm_password"
+                                <label class="form-label" for="confirm_password" style="font-size: 1rem;"
                                 >Role</label
                               >
                               </div>
@@ -245,89 +246,83 @@
                               <input
                                 type="text"
                                 id="id" name="id"
-                                class="form-control" style="transition: none;"
+                                class="form-control" style="transition: none;" style="font-size: 1rem;"
                               />
-                              <label class="form-label" for="id">ID</label
+                              <label class="form-label" for="id" style="font-size: 1rem;">ID</label
                               >
                             </div>
                           </div>
-                          <div class="col">
-                            <div class="form-outline">
-                            <label class="form-label" for="fname">First name</label>
+                            <div class="form-outline  mb-4">
+                            <label class="form-label" for="fname" style="font-size: 1rem;">First name</label>
                               <input
                                 type="text"
                                 id="fname" name="first_name"
-                                class="form-control" style="transition: none;" readonly
+                                class="form-control" style="transition: none;" readonly style="font-size: 1rem;"
                               />
                              
                               
                             </div>
-                          </div>
-                          <div class="col">
+                      
+                         
                             <div class="form-outline mb-4">
-                            <label class="form-label" for="mname"
+                            <label class="form-label" for="mname" style="font-size: 1rem;"
                                 >Middle name</label
                               >
                               <input
                                 type="text"
                                 id="mname" name="middle_name"
-                                class="form-control" style="transition: none;" readonly
+                                class="form-control" style="transition: none;" readonly style="font-size: 1rem;"
                               />
                              
-                            </div>
-                          </div>
+                       
                        </div>
-                       <div class="row mb-4">
-                        <!-- Email input -->
-                        <div class="col">
+                    
                           <div class="form-outline mb-4">
-                          <label class="form-label" for="email"
+                          <label class="form-label" for="email" style="font-size: 1rem;"
                             >Last Name</label
                           >
-                          <input type="lname" id="lname" name="last_name" class="form-control" style="transition: none;" readonly/>
-                          
-                        </div>
-                        </div>
+                          <input type="lname" id="lname" name="last_name" class="form-control" style="transition: none;" readonly style="font-size: 1rem;"/>
+                  
                         </div>
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="email"
+                        <label class="form-label" for="email" style="font-size: 1rem;"
                             >Email address</label
                           >
-                          <input type="email" id="email" name="email" class="form-control" style="transition: none;"/>
+                          <input type="email" id="email" name="email" class="form-control" style="transition: none;" style="font-size: 1rem;"/>
                          
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="password"
+                        <label class="form-label" for="password" style="font-size: 1rem;"
                             >Password</label
                           >
                           <input
                             type="password"
                             id="password" name="password"
-                            class="form-control" style="transition: none;"
+                            class="form-control" style="transition: none;" style="font-size: 1rem;"
                           />
                          
                         </div>
                              <!-- Password input -->
                              <div class="form-outline mb-4">
-                             <label class="form-label" for="confirm_password"
+                             <label class="form-label" for="confirm_password" style="font-size: 1rem;"
                                 >Confirm password</label
                               >
                               <input
                                 type="password"
                                 id="confirm_password" name="confirm_password"
-                                class="form-control" style="transition: none;"
+                                class="form-control" style="transition: none;" style="font-size: 1rem;"
                               />
                             
                             </div>
                            
                               <div class="form-outline mb-4">
-                              <label class="form-label" for="confirm_password"
+                              <label class="form-label" for="confirm_password" style="font-size: 1rem;"
                                 >Role</label
                               >
-                                <select  name="role" id="role" class="form-control" style="transition: none;">
+                                <select  name="role" id="role" class="form-control" style="transition: none;" style="font-size: 1rem;">
                                   <option disabled selected>Select your role</option>
                                   <option name="role" value="Buyer">Buyer</option>
                                   <option name="role" value="Seller">Seller</option>

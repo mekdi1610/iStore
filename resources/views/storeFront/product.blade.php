@@ -64,15 +64,12 @@
           <i class="bx bx-menu sidebarBtn"></i>
           <span class="dashboard">iStore</span>
         </div>
-        <div class="search-box">
-          <input type="text" placeholder="Search..." />
-          <i class="bx bx-search"></i>
-        </div>
         <div class="profile-details">
           <!--<img src="images/profile.jpg" alt="">-->
-          <span class="admin_name">{{$users['email']}}</span>
+          <span class="admin_name">{{$users['email'] ?? 'Login?'}}</span>
           <i class="bx bx-chevron-down"></i>
         </div>
+
       
       </nav>
 
@@ -139,19 +136,23 @@
                         
                         </div>
                         <div class="form-outline mb-4">
-                         
+                        <label class="form-label" for="name" style="font-size: 1rem;">Name</label>
                           <input type="text" class="form-control" id = "name" name="name" disabled style="border:0px" />
-                        
-                   
+</div>
+<div class="form-outline mb-4">
+                          <label class="form-label" for="name" style="font-size: 1rem;">Detail</label>
                         <input type="text" class="form-control" id = "detail" name="detail" disabled style="border:0px"  />
-                     
-               
+</div>
+<div class="form-outline mb-4">
+                        <label class="form-label" for="name" style="font-size: 1rem;">Code</label>
                         <input type="text" class="form-control" id = "code" name="code" disabled style="border:0px" />
-                       
-                   
+</div>
+<div class="form-outline mb-4">
+                        <label class="form-label" for="name" style="font-size: 1rem;">Model</label>
                         <input type="text" class="form-control" id = "model" name="model"  disabled style="border:0px" />
-                       
-                    
+</div>
+<div class="form-outline mb-4">
+                        <label class="form-label" for="name" style="font-size: 1rem;">Unit Price</label>
                         <input type="text" class="form-control" id = "unit_price" name="unit_price" disabled style="border:0px" />
                        
                         </div>

@@ -37,7 +37,7 @@
       </div>
       <ul class="nav-links">
       <li>
-          <a href="./index.html">
+          <a href="/client/seller">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
@@ -61,7 +61,7 @@
           </a>
         </li>
          <li class="log_out">
-          <a href="/">
+          <a href="/login">
             <i class="bx bx-log-out"></i>
             <span class="links_name">Log out</span>
           </a>
@@ -76,11 +76,12 @@
           <span class="dashboard">Dashboard</span>
         </div>
 
-        <div class="profile-shows">
+        <div class="profile-details">
           <!--<img src="images/profile.jpg" alt="">-->
-          <span class="admin_name">Prem Shahi</span>
+          <span class="admin_name">{{$users['email']}}</span>
           <i class="bx bx-chevron-down"></i>
         </div>
+   
       </nav>
 
       <div class="home-content">

@@ -21,7 +21,7 @@
       </div>
       <ul class="nav-links">
       <li>
-          <a href="./index.html">
+          <a href="/admin" class="active">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
@@ -33,13 +33,13 @@
           </a>
         </li>
         <li>
-          <a href="#" class="active">
+          <a href="/admin/store" >
             <i class="bx bx-store"></i>
             <span class="links_name">Stores</span>
           </a>
         </li>
          <li class="log_out">
-          <a href="/">
+          <a href="/login">
             <i class="bx bx-log-out"></i>
             <span class="links_name">Log out</span>
           </a>

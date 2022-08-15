@@ -42,26 +42,10 @@ class productController extends Controller
      */
     public function store(StoreproductRequest $request)
     {       
+        $value = Session::get('user');
+        $store=store::where('user_id', $value->id)->get()->first();
 
         $product = new Product;
-        //Image
-        // $validatedData = $request->validate([
-        //     'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        //    ]);
-        //    $name = $request->file('image')->getClientOriginalName();
-        //    $path = $request->file('image')->store('public/images');
-        //    $product->name = $name;
-        //    $product->path = $path;
-
-
-        // $request->validate([
-        //     'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
-        // ]);
-
-        // Save the file locally in the storage/public/ folder under a new folder named /product
-        // $newName = "product_".uniqid()."_".$request->file('image');
-        // $request->file('image')->storeAs("public/images",$newName);
- // return $request;
       
  if($request->file('image')){
    
@@ -77,10 +61,10 @@ class productController extends Controller
         $product->code = $request->code;
         $product->model = $request->model;
        // $product->image = $request->image;
-        //$product->store_id = 1;
+        $product->store_id = $store->id;
         $product->unit_price = $request->unit_price;
         $product->save();
-        Notification::send('Congrats', 'You\'ve Successfully Registered');
+        return back()->with('success','Sale Confirmed!');
       
     }
 
@@ -101,7 +85,7 @@ class productController extends Controller
         $store = store::where('user_id', $value->id)->get()->first();
         $products = product::where('store_id', $store->id)->get();
         $categories = category::where('store_id', $store->id)->get();
-        return view('client/seller/product')->with('products',$products)->with('categories',$categories);
+        return view('client/seller/product')->with('products',$products)->with('categories',$categories)->with('users', $value);
       
     }
     /**

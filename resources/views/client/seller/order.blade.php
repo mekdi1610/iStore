@@ -33,7 +33,7 @@
       </div>
       <ul class="nav-links">
       <li>
-          <a href="./index.html">
+          <a href="/client/seller">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
@@ -57,7 +57,7 @@
           </a>
         </li>
          <li class="log_out">
-          <a href="/">
+          <a href="/login">
             <i class="bx bx-log-out"></i>
             <span class="links_name">Log out</span>
           </a>
@@ -74,12 +74,14 @@
 
         <div class="profile-details">
           <!--<img src="images/profile.jpg" alt="">-->
-          <span class="admin_name">Prem Shahi</span>
+          <span class="admin_name">{{$users['email']}}</span>
           <i class="bx bx-chevron-down"></i>
         </div>
+   
       </nav>
 
       <div class="home-content">
+      @include('flash-message')
         <div class="sales-boxes">
           <div class="recent-sales box">
             <div class="title">
@@ -99,7 +101,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">
-                        Add new product
+                        Confirm Sales
                       </h5>
 
                       <button
@@ -110,37 +112,29 @@
                       ></button>
                     </div>
                     <div class="modal-body card-text">
-                    <form action="/api/product/store" method="POST" enctype="multipart/form-data">
+                    <form action="/api/sale/store" method="POST" enctype="multipart/form-data">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="name" style="font-size: 1rem;">Image</label>
-                        <input type="file" class="form-control" required name="image">
-                                              </div>
- 
+                          <input type="text" class="form-control" name="order_id" id="id" readonly/>
+                          <label class="form-label" for="name" style="font-size: 1rem;" >ID</label>
+                        </div>
                         <div class="form-outline mb-4">
-                          <input type="text" class="form-control" name="name"  />
+                          <input type="text" class="form-control" name="name"  id="name" disabled/>
                           <label class="form-label" for="name" style="font-size: 1rem;">Name</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                        <input type="text" class="form-control" name="detail"  />
-                        <label class="form-label" for="name" style="font-size: 1rem;">Detail</label>
+                        <input type="text" class="form-control" name="quantity"  id="quantity" disabled/>
+                        <label class="form-label" for="name" style="font-size: 1rem;">Quantity</label>
                         </div>
                         <div class="form-outline mb-4">
-                        <input type="text" class="form-control" name="code"  />
-                        <label class="form-label" for="name" style="font-size: 1rem;">Code</label>
+                        <input type="text" class="form-control" name="up" id="up" disabled/>
+                        <label class="form-label" for="name" style="font-size: 1rem;">Unit Price</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                        <input type="text" class="form-control" name="model"  />
-                        <label class="form-label" for="name" style="font-size: 1rem;">Model</label>
-                        </div>
-                        <div class="form-outline mb-4">
-                        <input type="text" class="form-control" name="unit_price"  />
-                        <label class="form-label" for="name" style="font-size: 1rem;">Unit Price</label>
-                        </div>
-                        <div class="form-outline mb-4">
-                   
+                        <input type="text" class="form-control" name="tp" id="tp" disabled/>
+                        <label class="form-label" for="name" style="font-size: 1rem;">Total Price</label>
                         </div>
                         <div class="modal-footer">
                       <button
@@ -150,7 +144,7 @@
                       >
                         Close
                       </button>
-                      <button class="btn btn-primary" type="submit" name="action" value="save" id="signup">Save</button>
+                      <button class="btn btn-success" type="submit" name="action" value="save" id="signup">Confirm Sale</button>
                      
                     </div>
                       </form>
@@ -160,135 +154,7 @@
                 </div>
               </div>
 
-              <!-- Modal -->
-              <div
-                class="modal fade"
-                id="updateModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        Update Product
-                      </h5>
-
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-mdb-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body card-text">
-                    <form action="/api/product/update" method="PUT">
-                        <!-- 2 column grid layout with text inputs for the first and last names -->
-                        <div class="form-outline mb-4">
-                        <label class="form-label" for="name" style="display:none;">ID</label>
-                          <input type="text" id="id" class="form-control" name="id"/>
-                        
-                        </div>
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="name" style="font-size: 1rem;">Name</label>
-                          <input type="text" class="form-control" id = "name" name="name"  />
-                        
-                        </div>
-
-                        <div class="form-outline mb-4">
-                        <label class="form-label" for="name" style="font-size: 1rem;">Detail</label>
-                        <input type="text" class="form-control" id = "detail" name="detail"  />
-                     
-                        </div>
-                        <div class="form-outline mb-4">
-                        <label class="form-label" for="name" style="font-size: 1rem;">Code</label>
-                        <input type="text" class="form-control" id = "code" name="code"  />
-                       
-                        </div>
-
-                        <div class="form-outline mb-4">
-                        <label class="form-label" for="name" style="font-size: 1rem;">Model</label>
-                        <input type="text" class="form-control" id = "model" name="model"  />
-                       
-                        </div>
-                        <div class="form-outline mb-4">
-                        <label class="form-label" for="name" style="font-size: 1rem;">Unit Price</label>
-                        <input type="text" class="form-control" id = "unit_price" name="unit_price"  />
-                       
-                        </div>
-                        <div class="form-outline mb-4">
-                     
-                        <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-mdb-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                      <button class="btn btn-primary" type="submit" name="action" value="save" id="signup">Save</button>
-                     
-                    </div>
-                      </form>
-                    </div>
-                  
-                  </div>
-                </div>
-</div>
-                 <!-- Modal -->
-              <div
-                class="modal fade"
-                id="deleteModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        Delete Product
-                      </h5>
-
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-mdb-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body card-text">
-                    <form action="/api/product/delete" method="POST">
-                        <!-- 2 column grid layout with text inputs for the first and last names -->
-                        <div class="form-outline mb-4">
-                        <label class="form-label" for="name">ID</label>
-                          <input type="text" id="id" class="form-control" name="id"/>
-                        
-                        </div>
-                        <div class="form-outline mb-4">
-                       <h6> Are you sure you want to delete this product?</h6>
-                        
-                        </div>
-                        <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-success"
-                        data-mdb-dismiss="modal"
-                      >
-                        No
-                      </button>
-                      <button class="btn btn-danger" type="submit" name="action" value="save" id="delete">Yes</button>
-                     
-                    </div>
-                      </form>
-                    </div>
-                  
-                  </div>
-                </div>
-             
-              </div>
-            </div>
+      
 
             <table class="table table-hover align-middle mb-0 bg-white">
               <thead class="bg-light">
@@ -304,7 +170,7 @@
               @foreach($orders ?? '' as $order)
               @foreach($products ?? '' as $product)
               
-              @if($product->id==$order->product_id)
+              @if($product->id==$order->product_id && $order->status=='active')
                 <tr>
                 <td>
                     <div class="ms-3">
@@ -323,7 +189,7 @@
              
                
              
-                  <a data-mdb-toggle="modal" date-status="update" data-id="{{$order['id']}}" data-product_id="{{$order['product_id']}}" data-quantity="{{$order['quantity']}}" title="Add this item" id="open-AddBookDialog" href="#updateModal"><x-tni-tick-o style="width: 20px;"/></a>
+                  <a data-mdb-toggle="modal" date-status="update" data-id="{{$order['id']}}" data-name="{{$product['name']}}" data-quantity="{{$order['quantity']}}" data-up="{{$product['unit_price']}}" title="Add this item" id="open-AddBookDialog" href="#exampleModal"><x-tni-tick-o style="width: 20px;"/></a>
                   </td>
 
                 </tr>
@@ -342,21 +208,18 @@
     $(document).on("click", "#open-AddBookDialog", function () {
      var id=$(this).data('id');
      var name = $(this).data('name');
-     var detail = $(this).data('detail');
-     var code = $(this).data('code');
-     var model = $(this).data('model');
-     var unit_price = $(this).data('unit_price');
-     var category_id = $(this).data('category_id');
+     var quantity = $(this).data('quantity');
+     var up = $(this).data('up');
+     var tp = document.getElementById('tp')
+    var total_price =  up*quantity
 
-    
+    tp.value = total_price
     //  var userId = $(this).data('id');
     $(".modal-body #id").val( id );
      $(".modal-body #name").val( name );
-     $(".modal-body #detail").val( detail );
-     $(".modal-body #code").val( code );
-     $(".modal-body #model").val( model );
-     $(".modal-body #unit_price").val( unit_price );
-     $(".modal-body #category_id").val( category_id );
+     $(".modal-body #quantity").val( quantity );
+     $(".modal-body #up").val( up );
+  
      
    
  

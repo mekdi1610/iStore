@@ -14,6 +14,7 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "mallardduck/blade-boxicons": "^2.3",
         "owenvoke/blade-fontawesome": "^1.10",
         "realrashid/sweet-alert": "^5.1"
     },

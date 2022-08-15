@@ -7,7 +7,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Session;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,7 @@ Route::get('/login', function() {
     Session::forget('user');
     return view('index');
 });
+Route::get('/client/seller', [DashboardController:: class, 'dashboardSeller']);
 Route::get('/product',[ProductController:: class, 'displayProduct']);
 
 
