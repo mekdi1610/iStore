@@ -90,7 +90,7 @@
             
          
           
-            <a data-mdb-toggle="modal" date-show="update" data-id="{{$product['id']}}" data-name="{{$product['name']}}" data-detail="{{$product['detail']}}" data-code="{{$product['code']}}" data-model="{{$product['model']}}" data-unit_price="{{$product['unit_price']}}" data-category_id="{{$product['category_id']}}"  title="Add this item" id="open-AddBookDialog" href="#exampleModal">
+            <a data-mdb-toggle="modal" date-show="update" data-image="{{$product['image']}}" data-id="{{$product['id']}}" data-name="{{$product['name']}}" data-detail="{{$product['detail']}}" data-code="{{$product['code']}}" data-model="{{$product['model']}}" data-unit_price="{{$product['unit_price']}}" data-category_id="{{$product['category_id']}}"  title="Add this item" id="open-AddBookDialog" href="#exampleModal">
             <div style="color:black">{{$product['name']}}</div>
            
 </a>   </div>
@@ -114,7 +114,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">
-                        Add new product
+                        Order Now!
                       </h5>
 
                       <button
@@ -128,7 +128,7 @@
                     <form action="/api/order/store" method="POST" enctype="multipart/form-data">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <div class="form-outline mb-4">
-                        <img src="{{url('/products/'.$product->image)}}" alt="Image"/><!-- 2 column grid layout with text inputs for the first and last names -->
+                        <img id="image" alt="Image"/><!-- 2 column grid layout with text inputs for the first and last names -->
                         </div>
                         <div class="form-outline mb-4"  style="display:none;">
                         <label class="form-label" for="name">ID</label>
@@ -188,6 +188,7 @@
               </section>
     <script>
 $(document).on("click", "#open-AddBookDialog", function () {
+  var image="/products/"+$(this).data('image');
      var id=$(this).data('id');
      var name = $(this).data('name');
      var detail = $(this).data('detail');
@@ -199,6 +200,7 @@ $(document).on("click", "#open-AddBookDialog", function () {
     
     //  var userId = $(this).data('id');
     $(".modal-body #id").val( id );
+    $(".modal-body #image").attr("src", image);
      $(".modal-body #name").val( name );
      $(".modal-body #detail").val( detail );
      $(".modal-body #code").val( code );

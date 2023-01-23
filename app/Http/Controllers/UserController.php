@@ -9,6 +9,7 @@ use App\Http\Controllers\SessionController;
 
 use App\Models\profile;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class userController extends SessionController
 {
@@ -68,6 +69,10 @@ class userController extends SessionController
         $hashedpassword = Hash::make($request->password);
         $user->password = $hashedpassword;
         $user->save();
+        if($request->role == "Seller")
+        {
+            
+        }
         return redirect()->back();
     }
 
@@ -95,17 +100,18 @@ class userController extends SessionController
             Session::put('user', $user);
             if ($user->role == "Admin") {
                 return view('admin/index');
-            } else if ($user->role == "Buyer") {
+            } else if ($user->role == "Buyer" || $user->role == "buyer") {
                 return redirect('/');
-            } else if ($user->role == "Seller") {
+            } else if ($user->role == "Seller" || $user->role == "seller") {
                 return redirect('client/seller');
             }
 
             // The passwords match...
         } else {
-            return "bye";
+
+              echo "<script>alert('Invalid username or password');
+              document.location = '/login' </script>";
         }
-        // return $user;
     }
 
     /**

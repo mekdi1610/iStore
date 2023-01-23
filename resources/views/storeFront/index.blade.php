@@ -28,7 +28,12 @@
         <li class="log_out">
           <a href="/login">
             <i class="bx bx-log-in"></i>
-            <span class="links_name">Login</span>
+@if(isset($users['email']))
+            <span class="links_name">{{$users['email'] ? 'Logout' : 'Login'}}</span>
+         @else
+         <span class="links_name">{{'Login'}}</span>
+       
+            @endif
           </a>
         </li>
       </ul>
@@ -55,12 +60,12 @@
         @foreach($categories ?? '' as $category)
     
        
-          <div class="box">
+          <div class="box" style="height:200px;">
             <div class="">
             <a href="{{ url('store/product/'.$category->id) }}">
             <x-bx-category />
             
-              <div class="number" style="color: black;">{{$category['name']}}</div>
+              <div class="" style="color: black; font-size:10px;">{{$category['name']}}</div>
               </a>
             </div>
           
@@ -71,7 +76,12 @@
         </div>
       </div>
     </section>
-
+<style>
+  svg {
+    width: 50.5px;
+    height: 50.5px;
+  }
+  </style>
     <script>
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");

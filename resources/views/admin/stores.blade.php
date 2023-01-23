@@ -194,6 +194,8 @@
                     </div>
                     <div class="modal-body card-text">
                     <form action="/api/store/update" method="POST">
+                    @method('PUT')
+    @csrf
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <div class="form-outline mb-4" style="display:none;">
                         <label class="form-label" for="name">ID</label>

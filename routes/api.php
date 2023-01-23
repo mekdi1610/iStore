@@ -33,7 +33,7 @@ Route::post('/user/store',[UserController:: class, 'store']);
 Route::post('/user/login',[UserController:: class, 'login']);
 Route::post('/admin/users',[UserController:: class, 'login']);
 Route::get('/user/update/{id}',[UserController:: class, 'update']);
-Route::post('/user/update',[UserController:: class, 'update']);
+Route::put('/user/update',[UserController:: class, 'update']);
 Route::delete('/user/delete/{id}',[UserController:: class, 'destroy']);
 
 //Profile
@@ -92,5 +92,5 @@ Route::get('/store/all',[storeController:: class, 'index']);
 Route::get('/store/{id}', [storeController::class, 'getAllProducts']);
 Route::post('/store/store',[storeController:: class, 'store']);
 Route::get('/store/getOrder/{id}', [storeController::class, 'getOrderList']);
-Route::post('/store/update',[storeController:: class, 'update']);
+Route::put('/store/update',[storeController:: class, 'update']);
 Route::delete('/store/delete/{id}',[storeController:: class, 'destroy']);

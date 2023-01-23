@@ -112,7 +112,6 @@ class productController extends Controller
         $product=product::find($request->id);
        
         $product->update($request->all());
-        return $product;
         return redirect()->back();
     }
 
